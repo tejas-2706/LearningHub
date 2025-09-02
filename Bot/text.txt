@@ -1,0 +1,8 @@
+await page.goto("https://www.flipkart.com/safari-magnum-zeno-2p-set-4w-cabin-check-in-4-wheels-26-inches/p/itmb4dd8ddb2773a?pid=STCGZN7GYSXUGBF9&lid=LSTSTCGZN7GYSXUGBF9FCL0JC&marketplace=FLIPKART&store=reh%2Fplk%2Ftvv&srno=b_1_1&otracker=browse&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_3_L2_view-all&fm=organic&iid=en_EF6Vodj0ODy831VGuzmaeQMYb-EVWz5NReI-_Kn1JxqugpLJc8QPu-74tUmZHmx_GInkzx_RdLMcDf3fS0ar4Q%3D%3D&ppt=browse&ppn=browse&ssid=s1rou6o2f40000001737127336058")
+
+    let selector = "button[fdprocessedid='h0ig5q']";
+
+    await page.waitForSelector(selector);
+    await page.evaluate((selector) => {
+        document.querySelector(selector).click()
+    }, selector)
