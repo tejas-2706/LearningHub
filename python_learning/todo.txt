@@ -1,0 +1,2 @@
+Task = Complete RAG Tuts || Priority = High 
+Task = Complete Python Tuts / Basics Fundamentals || Priority = Medium 
