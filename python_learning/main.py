@@ -36,22 +36,39 @@
 # else :
 #     print("odd")
 
-import random
-secret = random.randint(1,100)
+# import random
+# secret = random.randint(1,100)
 # secret = random.seed(42)
 
-print(secret)
-guess = None
+# print(secret)
+# guess = None
 
-while secret != guess :
-    guess = int(input("Enter a number"))
+# while secret != guess :
+#     guess = int(input("Enter a number"))
 
-if secret == guess:
-    print("correct guess")
-elif guess > secret:
-    print("too high")
-elif guess < secret:
-    print("too low")
-else:
-    print("wrong input")
+# if secret == guess:
+#     print("correct guess")
+# elif guess > secret:
+#     print("too high")
+# elif guess < secret:
+#     print("too low")
+# else:
+#     print("wrong input")
 
+
+
+# Multiplication Table
+
+# num = int(input("Enter a number = "))
+
+# for i in range(1,11):
+#     print(num , "*", i, "=", num * i)
+    
+
+# countdown
+
+# count = int(input("Enter a number = "))
+
+# while count > 0 :
+#     print(count)
+#     count=count-1
