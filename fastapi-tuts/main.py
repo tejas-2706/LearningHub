@@ -1,16 +1,28 @@
 from fastapi import FastAPI,HTTPException
-from pydantic import BaseModel
 from datetime import datetime
 from random import randint
 from typing import Any
+from schemas import Item
+from database import session,engine
+
+import models 
+from models import DBItem
 
 app = FastAPI(root_path="/api/v1")
 
-class Item(BaseModel):
-    text : str = None
-    is_done : bool = False
+models.Base.metadata.create_all(bind=engine)
 
 items = []
+
+# def init_db():
+#     db = session()
+#     new_item = DBItem(text="Buy phone", is_done=False)
+#     db.add(new_item)
+#     db.commit()
+#     db.close()
+
+# init_db()
+
 
 @app.get('/')
 async def root():
@@ -19,12 +31,22 @@ async def root():
 
 @app.post('/items')
 def create_item(item:Item): # query string in url path
-    items.append(item)
-    return items
+    db = session()
+    new_item = DBItem(**item.model_dump())
+    db.add(new_item)
+    db.commit()
+    db.refresh(new_item)
+    db.close()
+    # items.append(item)
+    return new_item
 
 @app.get('/items', response_model=list[Item])
 def list_item(limit:int = 10):
-    return items[0:limit]
+    db = session()
+    db_items = db.query(DBItem).limit(limit).all()
+    db.close()
+    # return items[0:limit]
+    return db_items
 
 
 @app.get('/items/{item_id}', response_model=Item)
